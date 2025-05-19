@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个性化饮食推荐</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select,
+        button {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>个性化饮食推荐</h1>
+    <form id="recommendationForm">
+        <label for="healthStatus">身体状况：</label>
+        <select id="healthStatus">
+            <option value="健康">健康</option>
+            <option value="减肥">减肥</option>
+            <option value="增肌">增肌</option>
+        </select>
+
+        <label for="tastePreference">口味偏好：</label>
+        <select id="tastePreference">
+            <option value="酸">酸</option>
+            <option value="甜">甜</option>
+            <option value="苦">苦</option>
+            <option value="辣">辣</option>
+            <option value="咸">咸</option>
+        </select>
+
+        <button type="submit">获取饮食建议</button>
+    </form>
+    <div id="recommendationResult"></div>
+
+    <script>
+        document.getElementById('recommendationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const healthStatus = document.getElementById('healthStatus').value;
+            const tastePreference = document.getElementById('tastePreference').value;
+            let recommendation = '';
+
+            if (healthStatus === '健康') {
+                if (tastePreference === '酸') {
+                    recommendation = "推荐食用一些凉拌醋溜白菜，富含维生素且口味清爽。";
+                } else if (tastePreference === '甜') {
+                    recommendation = "可以试试红枣山药粥，营养又滋补。";
+                } else if (tastePreference === '苦') {
+                    recommendation = "吃苦瓜炒蛋是个不错的选择，有助于清热降火。";
+                } else if (tastePreference === '辣') {
+                    recommendation = "宫保鸡丁能满足辣味需求，还富含蛋白质。";
+                } else if (tastePreference === '咸') {
+                    recommendation = "清蒸鲈鱼味道鲜美，营养丰富。";
+                }
+            } else if (healthStatus === '减肥') {
+                if (tastePreference === '酸') {
+                    recommendation = "推荐凉拌黄瓜，低卡又开胃。";
+                } else if (tastePreference === '甜') {
+                    recommendation = "可以吃点水煮玉米，饱腹感强且热量低。";
+                } else if (tastePreference === '苦') {
+                    recommendation = "吃苦苣沙拉，有助于促进消化和减脂。";
+                } else if (tastePreference === '辣') {
+                    recommendation = "可以尝试一下辣椒炒鸡胸肉，高蛋白低脂肪。";
+                } else if (tastePreference === '咸') {
+                    recommendation = "推荐清炒虾仁，营养丰富且热量低。";
+                }
+            } else if (healthStatus === '增肌') {
+                if (tastePreference === '酸') {
+                    recommendation = "来份番茄牛肉，富含蛋白质和多种营养。";
+                } else if (tastePreference === '甜') {
+                    recommendation = "甜口的烤鸡腿是不错的选择，能补充优质蛋白。";
+                } else if (tastePreference === '苦') {
+                    recommendation = "可以试试黑豆核桃炖猪腰，对增肌有帮助。";
+                } else if (tastePreference === '辣') {
+                    recommendation = "辣味的红烧牛肉，蛋白质满满。";
+                } else if (tastePreference === '咸') {
+                    recommendation = "盐水牛肉是增肌人士的优质选择。";
+                }
+            }
+
+            document.getElementById('recommendationResult').innerHTML = `<p>${recommendation}</p>`;
+        });
+    </script>
+</body>
+
+</html>
